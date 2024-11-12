@@ -33,6 +33,12 @@
   conda install -c conda-forge rioxarray
   conda install -c conda-forge netCDF4
   conda install -c conda-forge scikit-image
+  conda install -c conda-forge onnx
+  conda install -c conda-forge catboost
+  conda install -c conda-forge onnxruntime
+  conda install -c conda-forge geojson
+  conda install -c conda-forge pyarrow
+  conda install -c conda-forge fastparquet
   ```
 - create a jupyter kernel for the weed environment in jupyter notebooks
   - set up a conda environment with all needed packages (see above)
