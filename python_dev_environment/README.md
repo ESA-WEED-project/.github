@@ -39,6 +39,7 @@
   conda install -c conda-forge geojson
   conda install -c conda-forge pyarrow
   conda install -c conda-forge fastparquet
+  conda install pydrive2
   ```
 - create a jupyter kernel for the weed environment in jupyter notebooks
   - set up a conda environment with all needed packages (see above)
