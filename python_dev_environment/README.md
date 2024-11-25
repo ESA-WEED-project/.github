@@ -19,8 +19,12 @@
 - import environment by using the yml file in the repository
   ```
   conda env create -f <path>/weed_python_environment.yml
+  
+  OR
+  
+  conda env create -f <path>/weed_python_environment_linux.yml  
   ```
-- OR create the dev environment in this order (win or linux) by hand
+- OR create the dev environment in this order (win) by hand
   ```
   conda create --name weed python=3.12
   conda activate weed
@@ -41,6 +45,32 @@
   conda install -c conda-forge fastparquet
   conda install pydrive2
   ```
+- OR create the dev environment in this order (linux) by hand
+  ```
+  conda create --name weed python=3.12
+  conda activate weed
+  conda update --all
+  conda install notebook
+  conda install openeo
+  conda install rasterio
+  conda install geopandas
+  conda install matplotlib
+  conda install rioxarray
+  conda install netCDF4
+  conda install scikit-image
+  conda install onnx
+  conda install catboost
+  conda install onnxruntime
+  conda install geojson
+  conda install pyarrow
+  conda install fastparquet
+  conda install pydrive2
+  ```  
+- do editable install of your python project you are working on 
+  - cd in the working folder of your repro (mostly in PyCharmsProject the name of the cloned repository) with terminal
+  - run `conda activate weed`
+  -	run `python -m pip install -e .`
+
 - create a jupyter kernel for the weed environment in jupyter notebooks
   - set up a conda environment with all needed packages (see above)
   -	activate the environment e.g. `conda activate weed`
@@ -48,10 +78,6 @@
   - now in Jupyter you can select this Kernel or can create a new Notebook with that kernel (to start the notebooks just run `jupyter notebook` in your environment)
 
 ## PyCharm setting for the conda environment
-- first do editable install of your python project you are working on 
-  - cd in the working folder of your repro (mostly in PyCharmsProject the name of the cloned repository) with terminal
-  - run `conda activate weed`
-  -	run `python -m pip install -e .`
 - activate the WEED conda env in your PyCharm project via the 'Interpreter settings'
 - if you have issues in PyCharm debugging make sure to set the PROJ_LIB path in the debugging/run environment variables for GDAL (see image) 
 --> otherwise gdal command can stop working \
