@@ -44,6 +44,7 @@
   conda install -c conda-forge pyarrow
   conda install -c conda-forge fastparquet
   conda install pydrive2
+  conda install -c conda-forge boto3
   ```
 - OR create the dev environment in this order (linux) by hand
   ```
@@ -65,6 +66,7 @@
   conda install pyarrow
   conda install fastparquet
   conda install pydrive2
+  conda install boto3
   ```  
 - do editable install of your python project you are working on 
   - cd in the working folder of your repro (mostly in PyCharmsProject the name of the cloned repository) with terminal
