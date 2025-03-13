@@ -92,5 +92,5 @@
   conda env config vars set PROJ_DATA=/home/<machine_name>/miniconda3/envs/weed/share/proj
   ```
   - you'll need to deactivate + activate again the weed environment for this to take effect
-
+- if you having troube that the editable package is not showing in PyCharm (module not regognized) then try to install it editable via `pip install -e . --config-settings editable_mode=strict`
 
