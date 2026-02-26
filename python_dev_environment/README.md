@@ -15,6 +15,7 @@
 ## windows
 - install anaconda from webpage: https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Windows-x86_64.exe
 - or use the newest version from: https://www.anaconda.com/download/success
+- IMPORTANT: you can also install the newest MiniConda software instead
 ## setup the development environment in conda
 - import environment by using the yml file in the repository
   ```
@@ -68,6 +69,24 @@
   conda install pydrive2
   conda install boto3
   ```  
+- OR create the dev environment for **Python 3.14** in this way (linux & win) (NEWEST approach). For that the `eo_processing` and `habitat_mapping` ppackes have to be already cloned to your disk and are in the newest `dev` branch. Follow commands in this order even if it looks like you do things double (needed to assure editable install for both packages).
+  ```
+  conda config --add channels conda-forge
+  conda config --set channel_priority strict
+  conda activate base
+  conda update conda
+  conda create --name weed python=3.14
+  conda activate weed
+  conda install gdal libgdal
+  conda deactivate
+  conda activate weed
+  cd ~/PycharmProjects/eo_processing
+  python -m pip install -e .
+  cd ~/PycharmProjects/habitat_mapping
+  python -m pip install -e .
+  cd ~/PycharmProjects/eo_processing
+  python -m pip install -e .
+  ```
 - do editable install of your python project you are working on 
   - cd in the working folder of your repro (mostly in PyCharmsProject the name of the cloned repository) with terminal
   - run `conda activate weed`
