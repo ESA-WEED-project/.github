@@ -17,7 +17,26 @@
 - or use the newest version from: https://www.anaconda.com/download/success
 - IMPORTANT: you can also install the newest MiniConda software instead
 ## setup the development environment in conda
-- import environment by using the yml file in the repository
+- Prefered way for **Python 3.14** and newest **gdal** version (linux & win) (NEWEST approach). For that the `eo_processing` and `habitat_mapping` packages have to be already cloned to your disk and are in the newest `dev` branch. Follow commands in this order even if it looks like you do things double (needed to assure editable install for both packages).
+  ```
+  conda config --add channels conda-forge
+  conda config --set channel_priority strict
+  conda activate base
+  conda update conda
+  conda create --name weed python=3.14
+  conda activate weed
+  conda install gdal libgdal
+  conda deactivate
+  conda activate weed
+  cd ~/PycharmProjects/eo_processing
+  python -m pip install -e .
+  cd ~/PycharmProjects/habitat_mapping
+  python -m pip install -e .
+  cd ~/PycharmProjects/eo_processing
+  python -m pip install -e .
+  ```
+- Alternatives:
+  - import environment by using the yml file in the repository
   ```
   conda env create -f <path>/weed_python_environment.yml
   
@@ -25,7 +44,7 @@
   
   conda env create -f <path>/weed_python_environment_linux.yml  
   ```
-- OR create the dev environment in this order (win) by hand
+  - OR create the dev environment in this order (win) by hand
   ```
   conda create --name weed python=3.12
   conda activate weed
@@ -47,7 +66,7 @@
   conda install pydrive2
   conda install -c conda-forge boto3
   ```
-- OR create the dev environment in this order (linux) by hand
+  - OR create the dev environment in this order (linux) by hand
   ```
   conda create --name weed python=3.12
   conda activate weed
@@ -69,24 +88,6 @@
   conda install pydrive2
   conda install boto3
   ```  
-- OR create the dev environment for **Python 3.14** in this way (linux & win) (NEWEST approach). For that the `eo_processing` and `habitat_mapping` ppackes have to be already cloned to your disk and are in the newest `dev` branch. Follow commands in this order even if it looks like you do things double (needed to assure editable install for both packages).
-  ```
-  conda config --add channels conda-forge
-  conda config --set channel_priority strict
-  conda activate base
-  conda update conda
-  conda create --name weed python=3.14
-  conda activate weed
-  conda install gdal libgdal
-  conda deactivate
-  conda activate weed
-  cd ~/PycharmProjects/eo_processing
-  python -m pip install -e .
-  cd ~/PycharmProjects/habitat_mapping
-  python -m pip install -e .
-  cd ~/PycharmProjects/eo_processing
-  python -m pip install -e .
-  ```
 - do editable install of your python project you are working on 
   - cd in the working folder of your repro (mostly in PyCharmsProject the name of the cloned repository) with terminal
   - run `conda activate weed`
@@ -97,6 +98,17 @@
   -	activate the environment e.g. `conda activate weed`
   - create a kervel for jupyter e.g. `ipython kernel install --user --name=weed` 
   - now in Jupyter you can select this Kernel or can create a new Notebook with that kernel (to start the notebooks just run `jupyter notebook` in your environment)
+
+## Trouble shot for missing conda promt in linux terminal
+- due to the automatic puppet execution on the TerrascopeVM we contantly lose the prompt integration of conda in the terminal
+- just move that conda integration part from .bashrc to .user_aliases
+- do the following steps:
+  - create an empty file in your home directory with the name `.user_aliases`
+  - open the `.bashrc` file from you home directory and copy the `conda integration part` over to the new file
+  - if the `conda initalize` part is not present in your `.bashrc` then just execute again `~/miniconda3/bin/conda init bash` in your terminal
+  - save the `.user_aliases` file
+  - has to look in the end like this:
+<img width="1012" height="360" alt="image" src="https://github.com/user-attachments/assets/b55b9364-1c7d-4927-8d13-80a5bcc6fd65" />
 
 ## PyCharm setting for the conda environment
 - activate the WEED conda env in your PyCharm project via the 'Interpreter settings'
